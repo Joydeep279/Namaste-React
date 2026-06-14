@@ -4,15 +4,10 @@
 // // Experiment
 // console.log(heading.props.children);
 // console.log(root.render);
-const heading = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child1" }, [
-    React.createElement("h1", {}, "i'am H1 Tag!"),
-    React.createElement("h2", {}, "i'am H1 Tag!"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "i'am H1 Tag!"),
-    React.createElement("h2", {}, "i'am H1 Tag!"),
-  ]),
-]);
+
+const heading = React.createElement("h1", { id: "parent" }, "Hello");
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(heading);
+
+const jsxEle=<h1>Hello From JSX</h1>;
+
+root.render(jsxEle);
