@@ -1,21 +1,26 @@
 import React from "react";
-import ReactDom from "react-dom/client.js";
+import ReactDOM from "react-dom/client";
 
-const ele = React.createElement("h1", { id: "heading" }, "Welcome to React");
-// JSX element
-const JsxEle = () => <h1>Welcome to React</h1>;
-//JSX component
-function JsxComp() {
-  return (
-    <div>
-      {/* Composite Component => Component inside */}
-      <JsxEle />
-      <h1>Lecture 03</h1>
-      <h2>Welcome To React</h2>
-      <p>Complete Component Render</p>
-    </div>
-  );
+const heading = React.createElement("h1", { id: "display" }, "Hello");
+
+const Msg = ()=>(
+  <div>
+    <h1>MSG from jsx</h1>
+    <img src="d" alt="react-logo" />
+  </div>
+);
+
+const Heading=()=>{
+
+
+  return <div>
+    {100+20}
+    {Msg()}
+    {<Msg/>}
+    {<Msg></Msg>}
+    <h3>Welcome to the world of React</h3>
+  </div>
 }
 
-const root = ReactDom.createRoot(document.getElementById("root"));
-root.render(<JsxComp />);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Heading/>);
