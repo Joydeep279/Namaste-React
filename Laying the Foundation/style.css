@@ -69,6 +69,9 @@ h6 :hover {
 .Card:hover {
     border-radius: 10px;
     background-color: #f8f7ff;
+    transition: all;
+    transition-duration: 5ms;
+    transition-timing-function: cubic-bezier();
 }
 
 .Card img {
