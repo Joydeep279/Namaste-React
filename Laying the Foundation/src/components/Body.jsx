@@ -9,16 +9,18 @@ const Body = () => {
 
   useEffect(() => {
     getApiData();
-  }, [])
+  }, []);
 
   async function getApiData() {
-    const data = await fetch("https://corsproxy.io/?url=https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5454&lng=88.3600&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+    const data = await fetch(
+      "https://corsproxy.io/?url=https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5454&lng=88.3600&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
+    );
     const json = await data.json();
 
-    setResList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-
-    console.log("ReRendered!!!");
-
+    setResList(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
+    );
   }
 
   function filterRes() {
@@ -41,11 +43,15 @@ const Body = () => {
           {isFiltered ? "Back" : "Top Rated Restaurants"}
         </button>
       </div>
-      <div className="Card-Container">
-        {resList.map((curRes) => {
-          return <Card props={curRes} key={curRes.info.id} />;
-        })}
-      </div>
+      {resList.length === 0 ? (
+        <h1>Loading</h1>
+      ) : (
+        <div className="Card-Container">
+          {resList.map((curRes) => {
+            return <Card props={curRes} key={curRes.info.id} />;
+          })}
+        </div>
+      )}
     </div>
   );
 };
