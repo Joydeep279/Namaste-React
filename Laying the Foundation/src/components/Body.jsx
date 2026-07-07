@@ -14,7 +14,6 @@ const Body = () => {
   useEffect(() => {
     getApiData();
   }, []);
-
   async function getApiData() {
     const data = await fetch(
       "https://corsproxy.io/?url=https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5454&lng=88.3600&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
