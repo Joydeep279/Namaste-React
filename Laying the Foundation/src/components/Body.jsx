@@ -14,24 +14,33 @@ const Body = () => {
   useEffect(() => {
     getApiData();
   }, []);
+
   async function getApiData() {
+    // Fetch swiggy API using crosproxy
     const data = await fetch(
       "https://corsproxy.io/?url=https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5454&lng=88.3600&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
     );
+
     const json = await data.json();
+
     const resData =
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
+
     setMainList(resData);
     setResList(resData);
   }
 
   function filterRes() {
     if (isFiltered) {
+
       setResList(mainList);
       setIsFiltered(false);
+
     } else {
+
       const filteredList = mainList.filter((item) => item.info.avgRating > 4.5);
+
       setResList(filteredList);
       setIsFiltered(true);
     }
